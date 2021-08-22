@@ -1,14 +1,22 @@
 {
   "name": "eth-monorepo",
   "private": true,
-  "workspaces": [
-    "src/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/hardhat",
+      "**/hardhat/**"
+    ]
+  },
   "devDependencies": {
     "husky": "^7.0.1"
   },
   "scripts": {
     "prepare": "husky install",
-    "lint-packages": "yarn workspaces run lint-staged"
+    "lint-packages": "yarn workspaces run lint-staged",
+    "chain": "yarn workspace @eth-monorepo/hardhat chain",
+    "dev": "yarn workspace @eth-monorepo/frontend dev"
   }
 }
