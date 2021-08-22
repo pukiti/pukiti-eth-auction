@@ -7,6 +7,7 @@
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@typechain/ethers-v5": "^7.0.1",
     "@typechain/hardhat": "^2.0.2",
+    "@typechain/truffle-v5": "^5.0.0",
     "@types/chai": "^4.2.18",
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.12.2",
@@ -36,8 +37,5 @@
     "chain": "npx hardhat node",
     "compile": "npx hardhat compile",
     "deploy": "env-cmd -x npx hardhat run scripts/deploy.ts --network \\$DEPLOY_NETWORK"
-  },
-  "dependencies": {
-    "@typechain/truffle-v5": "^5.0.0"
   }
 }
