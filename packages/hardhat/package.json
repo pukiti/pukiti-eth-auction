@@ -24,7 +24,7 @@
     "typechain": "^5.0.0",
     "typescript": "^4.3.2"
   },
-    "lint-staged": {
+  "lint-staged": {
     "*.sol": [
       "yarn solhint",
       "yarn prettier:solidity"
@@ -36,5 +36,8 @@
     "chain": "npx hardhat node",
     "compile": "npx hardhat compile",
     "deploy": "env-cmd -x npx hardhat run scripts/deploy.ts --network \\$DEPLOY_NETWORK"
+  },
+  "dependencies": {
+    "@typechain/truffle-v5": "^5.0.0"
   }
 }

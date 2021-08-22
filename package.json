@@ -17,6 +17,8 @@
     "prepare": "husky install",
     "lint-packages": "yarn workspaces run lint-staged",
     "chain": "yarn workspace @eth-monorepo/hardhat chain",
-    "dev": "yarn workspace @eth-monorepo/frontend dev"
+    "compile": "yarn workspace @eth-monorepo/hardhat compile",
+    "deploy": "yarn workspace @eth-monorepo/hardhat deploy",
+    "dev": "yarn workspace @eth-monorepo/frontend dev,"
   }
 }
