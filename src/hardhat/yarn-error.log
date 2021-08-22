@@ -1,0 +1,64 @@
+Arguments: 
+  /home/gonza/.nvm/versions/node/v14.15.1/bin/node /home/gonza/.yarn/bin/yarn.js test
+
+PATH: 
+  /home/gonza/google-cloud-sdk/bin:/home/gonza/.nvm/versions/node/v14.15.1/bin:/home/gonza/.yarn/bin:/home/gonza/.config/yarn/global/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/compiler:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Python27/:/mnt/c/Python27/Scripts:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files (x86)/Yarn/bin/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/QuickTime/QTSystem/:/mnt/c/Users/Gonza/AppData/Roaming/nvm:/mnt/c/Program Files/nodejs:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Users/Gonza/scoop/shims:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Users/Gonza/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Docker Toolbox:/mnt/c/Users/Gonza/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin:/mnt/c/Users/Gonza/AppData/Local/Microsoft/WindowsApps:/snap/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.15.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/gonza/dev/hardhat-test/src/hardhat/package.json: Unexpected token $ in JSON at position 1094
+      at JSON.parse (<anonymous>)
+      at /home/gonza/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/home/gonza/.yarn/lib/cli.js:310:30)
+      at /home/gonza/.yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@eth-monorepo/hardhat",
+    "version": "1.0.0",
+    "devDependencies": {
+      "@nomiclabs/hardhat-ethers": "^2.0.2",
+      "@nomiclabs/hardhat-ganache": "^2.0.1",
+      "@nomiclabs/hardhat-waffle": "^2.0.1",
+      "@typechain/ethers-v5": "^7.0.1",
+      "@typechain/hardhat": "^2.0.2",
+      "@types/chai": "^4.2.18",
+      "@types/mocha": "^8.2.2",
+      "@types/node": "^15.12.2",
+      "chai": "^4.3.4",
+      "env-cmd": "^10.1.0",
+      "ethereum-waffle": "^3.3.0",
+      "ethers": "^5.2.0",
+      "hardhat": "^2.3.0",
+      "prettier": "^2.3.2",
+      "prettier-plugin-solidity": "^1.0.0-beta.17",
+      "solhint": "^3.3.6",
+      "solhint-plugin-prettier": "0.0.5",
+      "ts-node": "^10.0.0",
+      "typechain": "^5.0.0",
+      "typescript": "^4.3.2"
+    },
+    "scripts": {
+      "solhint": "./node_modules/.bin/solhint -f stylish contracts/**/*.sol",
+      "prettier:solidity": "./node_modules/.bin/prettier --write contracts/**/*.sol",
+      "chain": "npx hardhat node",
+      "compile": "npx hardhat compile",
+      "deploy": "npx hardhat run scripts/deploy.ts --network process.env.DEPLOY_NETWORK",
+      "test": "env-cmd echo \$DEPLOY_NETWORK"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,0 +1,14 @@
+{
+  "name": "eth-monorepo",
+  "private": true,
+  "workspaces": [
+    "src/*"
+  ],
+  "devDependencies": {
+    "husky": "^7.0.1"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint-packages": "yarn workspaces run lint-staged"
+  }
+}
