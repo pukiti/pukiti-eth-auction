@@ -19,6 +19,6 @@
     "chain": "yarn workspace @eth-monorepo/hardhat chain",
     "compile": "yarn workspace @eth-monorepo/hardhat compile",
     "deploy": "yarn workspace @eth-monorepo/hardhat deploy",
-    "dev": "yarn workspace @eth-monorepo/frontend dev,"
+    "dev": "yarn workspace @eth-monorepo/frontend dev"
   }
 }
