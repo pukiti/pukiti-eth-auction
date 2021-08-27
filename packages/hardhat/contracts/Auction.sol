@@ -120,7 +120,7 @@ contract Auction is IERC721Receiver {
     /**
        Called by the seller if they want to cancel the auction for their nft so the bidders get back the locked eeth and the seller get's back the nft
     */
-    function cancelAution(address _nft, uint256 _tokenId) external {
+    function cancelAuction(address _nft, uint256 _tokenId) external {
         tokenDetails storage auction = tokenToAuction[_nft][_tokenId];
         require(auction.seller == msg.sender);
         require(auction.isActive);
