@@ -2,37 +2,115 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import BN from "bn.js";
-import { EventData, PastEventOptions } from "web3-eth-contract";
+import {
+  ethers,
+  EventFilter,
+  Signer,
+  BigNumber,
+  BigNumberish,
+  PopulatedTransaction,
+  BaseContract,
+  ContractTransaction,
+  CallOverrides,
+} from "ethers";
+import { BytesLike } from "@ethersproject/bytes";
+import { Listener, Provider } from "@ethersproject/providers";
+import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
+import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
-export interface ERC165Contract extends Truffle.Contract<ERC165Instance> {
-  "new"(meta?: Truffle.TransactionDetails): Promise<ERC165Instance>;
+interface ERC165Interface extends ethers.utils.Interface {
+  functions: {
+    "supportsInterface(bytes4)": FunctionFragment;
+  };
+
+  encodeFunctionData(
+    functionFragment: "supportsInterface",
+    values: [BytesLike]
+  ): string;
+
+  decodeFunctionResult(
+    functionFragment: "supportsInterface",
+    data: BytesLike
+  ): Result;
+
+  events: {};
 }
 
-type AllEvents = never;
+export class ERC165 extends BaseContract {
+  connect(signerOrProvider: Signer | Provider | string): this;
+  attach(addressOrName: string): this;
+  deployed(): Promise<this>;
 
-export interface ERC165Instance extends Truffle.ContractInstance {
+  listeners<EventArgsArray extends Array<any>, EventArgsObject>(
+    eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  off<EventArgsArray extends Array<any>, EventArgsObject>(
+    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
+    listener: TypedListener<EventArgsArray, EventArgsObject>
+  ): this;
+  on<EventArgsArray extends Array<any>, EventArgsObject>(
+    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
+    listener: TypedListener<EventArgsArray, EventArgsObject>
+  ): this;
+  once<EventArgsArray extends Array<any>, EventArgsObject>(
+    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
+    listener: TypedListener<EventArgsArray, EventArgsObject>
+  ): this;
+  removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
+    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
+    listener: TypedListener<EventArgsArray, EventArgsObject>
+  ): this;
+  removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
+    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
+  ): this;
+
+  listeners(eventName?: string): Array<Listener>;
+  off(eventName: string, listener: Listener): this;
+  on(eventName: string, listener: Listener): this;
+  once(eventName: string, listener: Listener): this;
+  removeListener(eventName: string, listener: Listener): this;
+  removeAllListeners(eventName?: string): this;
+
+  queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
+    event: TypedEventFilter<EventArgsArray, EventArgsObject>,
+    fromBlockOrBlockhash?: string | number | undefined,
+    toBlock?: string | number | undefined
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+
+  interface: ERC165Interface;
+
+  functions: {
+    supportsInterface(
+      interfaceId: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+  };
+
   supportsInterface(
-    interfaceId: string,
-    txDetails?: Truffle.TransactionDetails
+    interfaceId: BytesLike,
+    overrides?: CallOverrides
   ): Promise<boolean>;
 
-  methods: {
+  callStatic: {
     supportsInterface(
-      interfaceId: string,
-      txDetails?: Truffle.TransactionDetails
+      interfaceId: BytesLike,
+      overrides?: CallOverrides
     ): Promise<boolean>;
   };
 
-  getPastEvents(event: string): Promise<EventData[]>;
-  getPastEvents(
-    event: string,
-    options: PastEventOptions,
-    callback: (error: Error, event: EventData) => void
-  ): Promise<EventData[]>;
-  getPastEvents(event: string, options: PastEventOptions): Promise<EventData[]>;
-  getPastEvents(
-    event: string,
-    callback: (error: Error, event: EventData) => void
-  ): Promise<EventData[]>;
+  filters: {};
+
+  estimateGas: {
+    supportsInterface(
+      interfaceId: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+  };
+
+  populateTransaction: {
+    supportsInterface(
+      interfaceId: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+  };
 }
