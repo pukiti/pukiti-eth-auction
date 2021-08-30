@@ -42,7 +42,7 @@ export interface AuctionInstance extends Truffle.ContractInstance {
     txDetails?: Truffle.TransactionDetails
   ): Promise<BN>;
 
-  cancelAution: {
+  cancelAuction: {
     (
       _nft: string,
       _tokenId: number | BN | string,
@@ -202,7 +202,7 @@ export interface AuctionInstance extends Truffle.ContractInstance {
       txDetails?: Truffle.TransactionDetails
     ): Promise<BN>;
 
-    cancelAution: {
+    cancelAuction: {
       (
         _nft: string,
         _tokenId: number | BN | string,

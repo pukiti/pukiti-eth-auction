@@ -1,9 +1,8 @@
-/* eslint no-use-before-define: "warn" */
-import { ethers } from "hardhat";
-import chalk from "chalk";
 import fs from "fs";
-import { utils, Contract } from "ethers";
+import chalk from "chalk";
+import { ethers } from "hardhat";
 import { hasPath } from "ramda";
+import { utils, Contract } from "ethers";
 
 const main = async () => {
   console.log("\n\n 📡 Deploying...\n");
@@ -46,6 +45,7 @@ const deploy = async (
   });
   const deployed = await contractArtifacts.deploy(...contractArgs, overrides);
   const encoded = abiEncodeArgs(deployed, contractArgs);
+  fs.writeFileSync(`artifacts/${contractName}.address`, deployed.address);
 
   let extraGasInfo = "";
   if (
@@ -68,6 +68,9 @@ const deploy = async (
     chalk.magenta(deployed.address)
   );
   console.log(" ⛽", chalk.grey(extraGasInfo));
+
+  if (!encoded || encoded.length <= 2) return deployed;
+  fs.writeFileSync(`artifacts/${contractName}.args`, encoded.slice(2));
 
   return deployed;
 };

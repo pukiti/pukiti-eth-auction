@@ -11,7 +11,6 @@ import { ERC165Contract } from "./ERC165";
 import { IERC165Contract } from "./IERC165";
 import { AuctionContract } from "./Auction";
 import { YourCollectibleContract } from "./YourCollectible";
-import { YourContractContract } from "./YourContract";
 
 declare global {
   namespace Truffle {
@@ -25,7 +24,6 @@ declare global {
       require(name: "IERC165"): IERC165Contract;
       require(name: "Auction"): AuctionContract;
       require(name: "YourCollectible"): YourCollectibleContract;
-      require(name: "YourContract"): YourContractContract;
     }
   }
 }
@@ -51,4 +49,3 @@ export {
   YourCollectibleContract,
   YourCollectibleInstance,
 } from "./YourCollectible";
-export { YourContractContract, YourContractInstance } from "./YourContract";
